@@ -21,7 +21,26 @@ interface Review_Info {
     cover: string;
 }
 
-const ReviewInfoCard = ({ reviewData }: { reviewData: Review_Info }) => {
+// This function is executed on the server when this page is accessed
+const ReviewInfoCard = async ({ params }: { params: { reviewId: string } }) => {
+    const { reviewId } = params;
+
+    let reviewData: Review_Info;
+
+    try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/review/review/in-depth/${reviewId}`);
+        if (!response.ok) {
+            throw new Error('Review not found');
+        }
+
+        reviewData = await response.json();
+    } catch (error) {
+        console.error('Error fetching review info:', error);
+        // Handle the error as needed
+        // You might want to throw an error here or return null
+        return null; // Or return a 404 page if you have one
+    }
+
     return (
         <div>
             <Title />
@@ -33,28 +52,12 @@ const ReviewInfoCard = ({ reviewData }: { reviewData: Review_Info }) => {
     );
 };
 
-// Server-side data fetching
-export async function getServerSideProps(context: { params: { reviewId: string } }) {
-    const { reviewId } = context.params;
-    console.log('reviewId: ', reviewId);
-    try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/review/review/in-depth/${reviewId}`);
-        console.log('response: ', response);
-        if (!response.ok) {
-            throw new Error('Review not found');
-        }
-
-        const reviewData = await response.json();
-
-        return {
-            props: { reviewData }, // Pass data to the page component
-        };
-    } catch (error) {
-        console.error('Error fetching review info:', error);
-        return {
-            notFound: true, // Show a 404 page if there's an error
-        };
-    }
-}
+// To enable fetching the reviewId from the URL
+export const generateStaticParams = async () => {
+    // This can be used to define dynamic routes if needed
+    // For example, if you want to generate static pages for a list of review IDs
+    // return [{ reviewId: '1' }, { reviewId: '2' }]; // Add more review IDs as necessary
+    return [];
+};
 
 export default ReviewInfoCard;

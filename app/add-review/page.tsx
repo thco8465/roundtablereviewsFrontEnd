@@ -1,3 +1,4 @@
+"use client"; // Add this line to mark the component as a Client Component
 import React, { useState } from 'react';
 import AddReview from '../components/AddReview/reviewForm'; // Adjust path as needed
 import SearchBar from '../components/searchBar/searchBar';

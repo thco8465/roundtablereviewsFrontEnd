@@ -1,9 +1,6 @@
 /* Fantasy Adventure Theme */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Uncial+Antiqua&display=swap');
 
-body {
-  font-family: 'Cinzel', serif;
-}
 /* Main header styling */
 .header {
   background-size: cover;

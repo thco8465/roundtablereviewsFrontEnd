@@ -25,3 +25,12 @@ body {
     text-wrap: balance;
   }
 }
+input[type="text"] {
+  background: #fff; /* White background for input fields */
+  border: 1px solid #8b5e3c; /* Dark brown border */
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  font-family: 'Garamond', serif; /* Matching font */
+}
