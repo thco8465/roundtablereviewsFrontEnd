@@ -1,6 +1,8 @@
 // components/FriendSearch.js
+"use client"; // This directive enables client component behavior
+
 import React, { useState } from 'react';
-import styles from '../styles/friendSearch.module.css'; // Adjust the path as needed
+import styles from './friendSearch.module.css'; // Adjust the path as needed
 
 interface User {
   id: number;

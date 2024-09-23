@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import FriendSearch from './friendSearch'; // Adjust the path as needed
 import FriendButton from './friendButton'; // Adjust the path as needed
-import styles from '../styles/addFriend.module.css'; // Adjust the path as needed
+import styles from './addFriend.module.css'; // Adjust the path as needed
 
 interface User {
   id: number;

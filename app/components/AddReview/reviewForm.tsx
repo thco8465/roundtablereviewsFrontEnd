@@ -1,7 +1,7 @@
 // components/ReviewForm.tsx
 "use client"; // This directive enables client component behavior
 import React, { useState, useEffect } from 'react';
-import styles from '../styles/reviewForm.module.css'; // Adjust the path as needed
+import styles from './reviewForm.module.css'; // Adjust the path as needed
 
 interface ReviewFormData {
   gameId: string | null;
